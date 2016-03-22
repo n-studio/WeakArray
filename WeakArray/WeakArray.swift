@@ -152,6 +152,15 @@ public struct WeakArray<T: AnyObject>: SequenceType, CustomDebugStringConvertibl
         let weak = Weak(value: newElement)
         items.insert(weak, atIndex: i)
     }
+    
+    public func indexOf(value: T?) -> Int? {
+        for (i, item) in items.enumerate() {
+            if item.value === value {
+                return i
+            }
+        }
+        return nil
+    }
 
     mutating public func removeAtIndex(index: Int) -> T? {
         let weak = items.removeAtIndex(index)
@@ -176,12 +185,12 @@ public struct WeakArray<T: AnyObject>: SequenceType, CustomDebugStringConvertibl
         items.replaceRange(subRange, with: weakElements)
     }
 
-    mutating public func splice(newElements: ArraySlice<T?>, atIndex i: Int) {
+    mutating public func insertContentsOf(newElements: ArraySlice<T?>, at i: Int) {
         let weakElements = newElements.map { Weak(value: $0) }
         items.insertContentsOf(weakElements, at: i)
     }
 
-    mutating public func extend(newElements: ArraySlice<T?>) {
+    mutating public func appendContentsOf(newElements: ArraySlice<T?>) {
         let weakElements = newElements.map { Weak(value: $0) }
         items.appendContentsOf(weakElements)
     }

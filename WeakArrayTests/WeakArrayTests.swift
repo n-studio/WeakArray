@@ -253,7 +253,7 @@ class WeakArrayTests: XCTestCase {
         let obj3: Object? = Object()
         let obj4: Object? = Object()
         var a: WeakArray = [obj1!, obj2!]
-        a.splice([obj3!, obj4!], atIndex: 1)
+        a.insertContentsOf([obj3!, obj4!], at: 1)
         let b: WeakArray = [obj1!, obj3!, obj4!, obj2!]
         XCTAssert(a == b, "Order did not match")
     }
@@ -266,7 +266,7 @@ class WeakArrayTests: XCTestCase {
         var a: WeakArray = [obj1!, obj2!]
         var b: WeakArray = [obj3!, obj4!]
         let c: WeakArray = [obj1!, obj2!, obj3!, obj4!]
-        a.extend(b[0...1])
+        a.appendContentsOf(b[0...1])
         XCTAssert(a == c, "Items not appended correctly")
     }
 
@@ -294,6 +294,19 @@ class WeakArrayTests: XCTestCase {
         let b = a.reverse()
         let c: WeakArray = [obj4!, obj3!, obj2!, obj1!]
         XCTAssert(b == c, "Did not reverse properly")
+    }
+    
+    func testIndexOfFindsCorrectPosition() {
+        let obj1: Object? = Object()
+        let obj2: Object? = Object()
+        let obj3: Object? = Object()
+        let obj4: Object? = Object()
+        let a: WeakArray = [obj1!, obj2!, obj3!, obj4!]
+        
+        XCTAssert(a.indexOf(obj1) == 0, "Object not in correct position")
+        XCTAssert(a.indexOf(obj2) == 1, "Object not in correct position")
+        XCTAssert(a.indexOf(obj3) == 2, "Object not in correct position")
+        XCTAssert(a.indexOf(obj4) == 3, "Object not in correct position")
     }
 }
 
