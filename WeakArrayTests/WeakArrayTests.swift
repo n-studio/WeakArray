@@ -19,20 +19,20 @@ class Object: NSObject {
 class WeakArrayTests: XCTestCase {
     func testAddingObjectIncreasesCount() {
         var a = WeakArray<Object>()
-        var obj: Object? = Object()
+        let obj: Object? = Object()
         a.append(obj)
         XCTAssert(a.count == 1, "Array count did not increase")
     }
     func testAddingObjectWithAppendIncreasesCount() {
         var a = WeakArray<Object>()
-        var obj: Object? = Object()
+        let obj: Object? = Object()
         a.append(obj)
         XCTAssert(a.count == 1, "Array count did not increase")
     }
 
     func testCanStoreAndRetriveObject() {
         var a = WeakArray<Object>()
-        var obj: Object? = Object()
+        let obj: Object? = Object()
         a.append(obj)
         XCTAssert(a[0] == obj, "Retrieved object was \(a[0]) instead of expected obj")
     }
@@ -47,8 +47,8 @@ class WeakArrayTests: XCTestCase {
 
     func testCanStoreWithSubscript() {
         var a = WeakArray<Object>()
-        var obj1: Object? = Object()
-        var obj2: Object? = Object()
+        let obj1: Object? = Object()
+        let obj2: Object? = Object()
         a.append(obj1)
         a[0] = obj2
         XCTAssert(a[0] == obj2, "Retrieved object was \(a[0]) instead of expected obj")
@@ -56,10 +56,10 @@ class WeakArrayTests: XCTestCase {
 
     func testCanSetWithRange() {
         var a = WeakArray<Object>()
-        var obj1: Object? = Object()
-        var obj2: Object? = Object()
-        var obj3: Object? = Object()
-        var obj4: Object? = Object()
+        let obj1: Object? = Object()
+        let obj2: Object? = Object()
+        let obj3: Object? = Object()
+        let obj4: Object? = Object()
         a.append(obj1)
         a.append(obj2)
         a.append(obj3)
@@ -73,25 +73,24 @@ class WeakArrayTests: XCTestCase {
 
     func testCanGetWithRange() {
         var a = WeakArray<Object>()
-        var obj1: Object? = Object()
-        var obj2: Object? = Object()
+        let obj1: Object? = Object()
+        let obj2: Object? = Object()
         a.append(obj1)
         a.append(obj2)
         a.append(nil)
         let slice = a[0...2]
-        println("Slice: \(slice)")
-        XCTAssert(slice[0] == obj1, "First entry did not match")
-        XCTAssert(slice[1] == obj2, "Second entry did not match")
-        XCTAssertNil(slice[2], "Third entry should be nil")
+        XCTAssert(slice[slice.startIndex] == obj1, "First entry did not match")
+        XCTAssert(slice[slice.startIndex + 1] == obj2, "Second entry did not match")
+        XCTAssertNil(slice[slice.startIndex + 2], "Third entry should be nil")
     }
 
     func testAppendingWeakArraytoWeakArray() {
         var a1 = WeakArray<Object>()
         var a2 = WeakArray<Object>()
-        var obj1: Object? = Object()
-        var obj2: Object? = Object()
-        var obj3: Object? = Object()
-        var obj4: Object? = Object()
+        let obj1: Object? = Object()
+        let obj2: Object? = Object()
+        let obj3: Object? = Object()
+        let obj4: Object? = Object()
         a1.append(obj1)
         a1.append(obj2)
         a2.append(obj3)
@@ -105,10 +104,10 @@ class WeakArrayTests: XCTestCase {
     func testAppendingArrayToWeakArray() {
         var a1 = WeakArray<Object>()
         var a2 = [Object]()
-        var obj1: Object? = Object()
-        var obj2: Object? = Object()
-        var obj3: Object? = Object()
-        var obj4: Object? = Object()
+        let obj1: Object? = Object()
+        let obj2: Object? = Object()
+        let obj3: Object? = Object()
+        let obj4: Object? = Object()
         a1.append(obj1)
         a1.append(obj2)
         a2.append(obj3!)
@@ -133,37 +132,37 @@ class WeakArrayTests: XCTestCase {
 
     func testIterationGetsCorrectObjects() {
         var a = WeakArray<Object>()
-        var obj: Object? = Object()
+        let obj: Object? = Object()
         a.append(obj)
         a.append(obj)
         a.append(obj)
         var i = 0
         for value in a {
             XCTAssert(value == obj, "Iterated value did not match")
-            i++
+            i += 1
         }
-        XCTAssert(i == 3, "Iteration count did not match")
+        XCTAssert(i == 3, "Iteration count did not match, was \(i) instead of 3")
     }
 
     func testIterationIsNotInterruptedByNilObject() {
         var a = WeakArray<Object>()
-        var obj1: Object? = Object()
+        let obj1: Object? = Object()
         var obj2: Object? = Object()
-        var obj3: Object? = Object()
+        let obj3: Object? = Object()
         a.append(obj1)
         a.append(obj2)
         a.append(obj3)
         obj2 = nil
         var i = 0
-        for value in a {
-            i++
+        for _ in a {
+            i += 1
         }
-        XCTAssert(i == 2, "Iteration count did not match")
+        XCTAssert(i == 2, "Iteration count did not match, was \(i) instead of 2")
     }
 
     func testModifyingAnArrayDoesNotAffectCopies() {
         var a = WeakArray<Object>()
-        var obj: Object? = Object()
+        let obj: Object? = Object()
         a.append(obj)
         var b = a
         b[0] = nil
@@ -171,15 +170,15 @@ class WeakArrayTests: XCTestCase {
     }
 
     func testCanBeConstructedWithArrayLiteral() {
-        var obj: Object? = Object()
-        var a: WeakArray<Object> = [obj!]
+        let obj: Object? = Object()
+        var a: WeakArray = [obj!]
         XCTAssert(a[0] == obj, "Object was not added")
     }
 
     func testFirst() {
         var a = WeakArray<Object>()
-        var obj1: Object? = Object()
-        var obj2: Object? = Object()
+        let obj1: Object? = Object()
+        let obj2: Object? = Object()
         a.append(obj1)
         a.append(obj2)
         XCTAssert(a.first == obj1, "First object did not match")
@@ -187,96 +186,96 @@ class WeakArrayTests: XCTestCase {
 
     func testLast() {
         var a = WeakArray<Object>()
-        var obj1: Object? = Object()
-        var obj2: Object? = Object()
+        let obj1: Object? = Object()
+        let obj2: Object? = Object()
         a.append(obj1)
         a.append(obj2)
         XCTAssert(a.last == obj2, "Last object did not match")
     }
 
     func testWithSameValuesAreEqual() {
-        var obj1: Object? = Object()
-        var obj2: Object? = Object()
-        var a: WeakArray<Object> = [obj1!, obj2!]
-        var b: WeakArray<Object> = [obj1!, obj2!]
+        let obj1: Object? = Object()
+        let obj2: Object? = Object()
+        let a: WeakArray = [obj1!, obj2!]
+        let b: WeakArray = [obj1!, obj2!]
         XCTAssert(a == b, "Arrays are not equal")
     }
 
     func testWithDifferentValuesAreNotEqual() {
-        var obj1: Object? = Object()
-        var obj2: Object? = Object()
-        var a: WeakArray<Object> = [obj1!]
-        var b: WeakArray<Object> = [obj2!]
+        let obj1: Object? = Object()
+        let obj2: Object? = Object()
+        let a: WeakArray = [obj1!]
+        let b: WeakArray = [obj2!]
         XCTAssert(a != b, "Arrays should not be equal")
     }
 
     func testSlicesOfSameValuesAreEqual() {
-        var obj1: Object? = Object()
-        var obj2: Object? = Object()
-        var a: WeakArray<Object> = [obj1!, obj2!]
-        var b: WeakArray<Object> = [obj1!, obj2!]
+        let obj1: Object? = Object()
+        let obj2: Object? = Object()
+        var a: WeakArray = [obj1!, obj2!]
+        var b: WeakArray = [obj1!, obj2!]
         XCTAssert(a[0...1] == b[0...1], "Slices are not equal")
     }
 
     func testSliceOfDifferentValuesAreNotEqual() {
-        var obj1: Object? = Object()
-        var obj2: Object? = Object()
-        var obj3: Object? = Object()
-        var a: WeakArray<Object> = [obj1!, obj2!, obj3!]
-        var b: WeakArray<Object> = [obj1!, obj2!, obj3!]
+        let obj1: Object? = Object()
+        let obj2: Object? = Object()
+        let obj3: Object? = Object()
+        var a: WeakArray = [obj1!, obj2!, obj3!]
+        var b: WeakArray = [obj1!, obj2!, obj3!]
         XCTAssert(a[0...1] != b[1...2], "Slices should not be equal")
     }
 
     func testInsertAtIndexInsertsElementInCorrectLocation() {
-        var obj1: Object? = Object()
-        var obj2: Object? = Object()
-        var obj3: Object? = Object()
-        var a: WeakArray<Object> = [obj1!, obj2!]
+        let obj1: Object? = Object()
+        let obj2: Object? = Object()
+        let obj3: Object? = Object()
+        var a: WeakArray = [obj1!, obj2!]
         a.insert(obj3, atIndex: 1)
-        var b: WeakArray<Object> = [obj1!, obj3!, obj2!]
+        let b: WeakArray = [obj1!, obj3!, obj2!]
         XCTAssert(a == b, "Order did not match")
     }
 
     func testReplaceRangeReplacesItemsInRange() {
-        var obj1: Object? = Object()
-        var obj2: Object? = Object()
-        var obj3: Object? = Object()
-        var obj4: Object? = Object()
-        var a: WeakArray<Object> = [obj1!, obj2!]
+        let obj1: Object? = Object()
+        let obj2: Object? = Object()
+        let obj3: Object? = Object()
+        let obj4: Object? = Object()
+        var a: WeakArray = [obj1!, obj2!]
         a.replaceRange(0...1, with: [obj3!, obj4!])
-        var b: WeakArray<Object> = [obj3!, obj4!]
+        let b: WeakArray = [obj3!, obj4!]
         XCTAssert(a == b, "Values did not match")
     }
 
     func testSpliceInsertsElementsInCorrectLocation() {
-        var obj1: Object? = Object()
-        var obj2: Object? = Object()
-        var obj3: Object? = Object()
-        var obj4: Object? = Object()
-        var a: WeakArray<Object> = [obj1!, obj2!]
+        let obj1: Object? = Object()
+        let obj2: Object? = Object()
+        let obj3: Object? = Object()
+        let obj4: Object? = Object()
+        var a: WeakArray = [obj1!, obj2!]
         a.splice([obj3!, obj4!], atIndex: 1)
-        var b: WeakArray<Object> = [obj1!, obj3!, obj4!, obj2!]
+        let b: WeakArray = [obj1!, obj3!, obj4!, obj2!]
         XCTAssert(a == b, "Order did not match")
     }
 
     func testExtendAppendsElements() {
-        var obj1: Object? = Object()
-        var obj2: Object? = Object()
-        var obj3: Object? = Object()
-        var obj4: Object? = Object()
-        var a: WeakArray<Object> = [obj1!, obj2!]
-        var b: WeakArray<Object> = [obj3!, obj4!]
-        var c: WeakArray<Object> = [obj1!, obj2!, obj3!, obj4!]
+        let obj1: Object? = Object()
+        let obj2: Object? = Object()
+        let obj3: Object? = Object()
+        let obj4: Object? = Object()
+        var a: WeakArray = [obj1!, obj2!]
+        var b: WeakArray = [obj3!, obj4!]
+        let c: WeakArray = [obj1!, obj2!, obj3!, obj4!]
         a.extend(b[0...1])
         XCTAssert(a == c, "Items not appended correctly")
     }
 
     func testFilterOnlyAddsForTrueValue() {
-        var obj1: Object? = Object()
-        var obj2: Object? = Object()
-        var obj3: Object? = Object()
-        var obj4: Object? = Object()
-        var a: WeakArray<Object> = [obj1!, obj2!, obj3!, obj4!]
+        let obj1: Object? = Object()
+        let obj2: Object? = Object()
+        let obj3: Object? = Object()
+        let obj4: Object? = Object()
+        let a: WeakArray = [obj1!, obj2!, obj3!, obj4!]
         var count = 0
         var b = a.filter { item in
             count += 1
@@ -287,13 +286,13 @@ class WeakArrayTests: XCTestCase {
     }
 
     func testReversePutsElemetsInCorrectOrder() {
-        var obj1: Object? = Object()
-        var obj2: Object? = Object()
-        var obj3: Object? = Object()
-        var obj4: Object? = Object()
-        var a: WeakArray<Object> = [obj1!, obj2!, obj3!, obj4!]
-        var b = a.reverse()
-        var c: WeakArray<Object> = [obj4!, obj3!, obj2!, obj1!]
+        let obj1: Object? = Object()
+        let obj2: Object? = Object()
+        let obj3: Object? = Object()
+        let obj4: Object? = Object()
+        let a: WeakArray = [obj1!, obj2!, obj3!, obj4!]
+        let b = a.reverse()
+        let c: WeakArray = [obj4!, obj3!, obj2!, obj1!]
         XCTAssert(b == c, "Did not reverse properly")
     }
 }
