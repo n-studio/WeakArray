@@ -301,12 +301,14 @@ class WeakArrayTests: XCTestCase {
         let obj2: Object? = Object()
         let obj3: Object? = Object()
         let obj4: Object? = Object()
+        let obj5: Object? = Object()
         let a: WeakArray = [obj1!, obj2!, obj3!, obj4!]
         
-        XCTAssert(a.indexOf(obj1) == 0, "Object not in correct position")
-        XCTAssert(a.indexOf(obj2) == 1, "Object not in correct position")
-        XCTAssert(a.indexOf(obj3) == 2, "Object not in correct position")
-        XCTAssert(a.indexOf(obj4) == 3, "Object not in correct position")
+        XCTAssert(a.indexOf(obj1) == 0, "Object not in correct position, is in \(a.indexOf(obj1)) instead of 0")
+        XCTAssert(a.indexOf(obj2) == 1, "Object not in correct position, is in \(a.indexOf(obj2)) instead of 1")
+        XCTAssert(a.indexOf(obj3) == 2, "Object not in correct position, is in \(a.indexOf(obj3)) instead of 2")
+        XCTAssert(a.indexOf(obj4) == 3, "Object not in correct position, is in \(a.indexOf(obj4)) instead of 3")
+        XCTAssert(a.indexOf(obj5) == nil, "Object not in correct position, is in \(a.indexOf(obj5)) instead of nil")
     }
 }
 

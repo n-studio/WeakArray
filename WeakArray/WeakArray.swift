@@ -154,9 +154,10 @@ public struct WeakArray<T: AnyObject>: SequenceType, CustomDebugStringConvertibl
     }
     
     public func indexOf(value: T?) -> Int? {
-        for (i, item) in items.enumerate() {
-            if item.value === value {
-                return i
+        for idx in 0..<count {
+            let obj = items[idx]
+            if value === obj.value {
+                return idx
             }
         }
         return nil
