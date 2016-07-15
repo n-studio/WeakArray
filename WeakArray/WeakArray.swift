@@ -46,12 +46,12 @@ public func !=<T: Equatable>(lhs: ArraySlice<T?>, rhs: ArraySlice<T?>) -> Bool {
     return !(lhs == rhs)
 }
 
-public func +=<T> (inout lhs: WeakArray<T>, rhs: WeakArray<T>) -> WeakArray<T> {
+public func +=<T> (lhs: inout WeakArray<T>, rhs: WeakArray<T>) -> WeakArray<T> {
     lhs.items += rhs.items
     return lhs
 }
 
-public func +=<T> (inout lhs: WeakArray<T>, rhs: Array<T>) -> WeakArray<T> {
+public func +=<T> (lhs: inout WeakArray<T>, rhs: Array<T>) -> WeakArray<T> {
     for item in rhs {
         lhs.append(item)
     }
@@ -75,7 +75,7 @@ private class Weak<T: AnyObject> {
 
 // MARK:-
 
-public struct WeakArray<T: AnyObject>: SequenceType, CustomDebugStringConvertible, ArrayLiteralConvertible {
+public struct WeakArray<T: AnyObject>: Sequence, CustomDebugStringConvertible, ArrayLiteralConvertible {
     // MARK: Private
     private typealias WeakObject = Weak<T>
     private var items = [WeakObject]()
@@ -110,7 +110,7 @@ public struct WeakArray<T: AnyObject>: SequenceType, CustomDebugStringConvertibl
         }
     }
 
-    public func generate() -> WeakGenerator<T> {
+    public func makeIterator() -> WeakGenerator<T> {
         let weakSlice: ArraySlice<WeakObject> = items[0..<items.count]
         let slice: ArraySlice<T?> = ArraySlice(weakSlice.map { $0.value })
         return WeakGenerator<T>(items: slice)
@@ -143,17 +143,17 @@ public struct WeakArray<T: AnyObject>: SequenceType, CustomDebugStringConvertibl
         }
     }
 
-    mutating public func append(value: T?) {
+    mutating public func append(_ value: T?) {
         let weak = Weak(value: value)
         items.append(weak)
     }
 
-    mutating public func insert(newElement: T?, atIndex i: Int) {
+    mutating public func insert(_ newElement: T?, atIndex i: Int) {
         let weak = Weak(value: newElement)
-        items.insert(weak, atIndex: i)
+        items.insert(weak, at: i)
     }
     
-    public func indexOf(value: T?) -> Int? {
+    public func indexOf(_ value: T?) -> Int? {
         for idx in 0..<count {
             let obj = items[idx]
             if value === obj.value {
@@ -163,8 +163,8 @@ public struct WeakArray<T: AnyObject>: SequenceType, CustomDebugStringConvertibl
         return nil
     }
 
-    mutating public func removeAtIndex(index: Int) -> T? {
-        let weak = items.removeAtIndex(index)
+    mutating public func removeAtIndex(_ index: Int) -> T? {
+        let weak = items.remove(at: index)
         return weak.value
     }
 
@@ -173,30 +173,30 @@ public struct WeakArray<T: AnyObject>: SequenceType, CustomDebugStringConvertibl
         return weak.value
     }
 
-    mutating public func removeAll(keepCapacity: Bool) {
-        items.removeAll(keepCapacity: keepCapacity)
+    mutating public func removeAll(_ keepCapacity: Bool) {
+        items.removeAll(keepingCapacity: keepCapacity)
     }
 
-    mutating public func removeRange(subRange: Range<Int>) {
-        items.removeRange(subRange)
+    mutating public func removeRange(_ subRange: Range<Int>) {
+        items.removeSubrange(subRange)
     }
 
-    mutating public func replaceRange(subRange: Range<Int>, with newElements: ArraySlice<T?>) {
+    mutating public func replaceRange(_ subRange: Range<Int>, with newElements: ArraySlice<T?>) {
         let weakElements = newElements.map { Weak(value: $0) }
-        items.replaceRange(subRange, with: weakElements)
+        items.replaceSubrange(subRange, with: weakElements)
     }
 
-    mutating public func insertContentsOf(newElements: ArraySlice<T?>, at i: Int) {
+    mutating public func insertContentsOf(_ newElements: ArraySlice<T?>, at i: Int) {
         let weakElements = newElements.map { Weak(value: $0) }
-        items.insertContentsOf(weakElements, at: i)
+        items.insert(contentsOf: weakElements, at: i)
     }
 
-    mutating public func appendContentsOf(newElements: ArraySlice<T?>) {
+    mutating public func appendContentsOf(_ newElements: ArraySlice<T?>) {
         let weakElements = newElements.map { Weak(value: $0) }
-        items.appendContentsOf(weakElements)
+        items.append(contentsOf: weakElements)
     }
 
-    public func filter(includeElement: (T?) -> Bool) -> WeakArray<T> {
+    public func filter(_ includeElement: (T?) -> Bool) -> WeakArray<T> {
         var filtered: WeakArray<T> = []
         for item in items {
             if includeElement(item.value) {
@@ -208,7 +208,7 @@ public struct WeakArray<T: AnyObject>: SequenceType, CustomDebugStringConvertibl
 
     public func reverse() -> WeakArray<T> {
         var reversed: WeakArray<T> = []
-        let reversedItems = items.reverse()
+        let reversedItems = items.reversed()
         for item in reversedItems {
             reversed.append(item.value)
         }
@@ -218,7 +218,7 @@ public struct WeakArray<T: AnyObject>: SequenceType, CustomDebugStringConvertibl
 
 // MARK:-
 
-public struct WeakGenerator<T>: GeneratorType {
+public struct WeakGenerator<T>: IteratorProtocol {
     private var items: ArraySlice<T?>
 
     mutating public func next() -> T? {
