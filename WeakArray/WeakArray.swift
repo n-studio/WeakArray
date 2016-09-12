@@ -75,10 +75,10 @@ private class Weak<T: AnyObject> {
 
 // MARK:-
 
-public struct WeakArray<T: AnyObject>: Sequence, CustomDebugStringConvertible, ArrayLiteralConvertible {
+public struct WeakArray<T: AnyObject>: Sequence, CustomDebugStringConvertible, ExpressibleByArrayLiteral {
     // MARK: Private
-    private typealias WeakObject = Weak<T>
-    private var items = [WeakObject]()
+    fileprivate typealias WeakObject = Weak<T>
+    fileprivate var items = [WeakObject]()
 
     // MARK: Public
     public var description: String {
@@ -219,7 +219,7 @@ public struct WeakArray<T: AnyObject>: Sequence, CustomDebugStringConvertible, A
 // MARK:-
 
 public struct WeakGenerator<T>: IteratorProtocol {
-    private var items: ArraySlice<T?>
+    fileprivate var items: ArraySlice<T?>
 
     mutating public func next() -> T? {
         while !items.isEmpty {
