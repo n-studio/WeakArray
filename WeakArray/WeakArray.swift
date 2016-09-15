@@ -129,7 +129,7 @@ public struct WeakArray<T: AnyObject>: Sequence, CustomDebugStringConvertible, E
         }
     }
 
-    public subscript(range: Range<Int>) -> ArraySlice<T?> {
+    public subscript(range: CountableClosedRange<Int>) -> ArraySlice<T?> {
         get {
             let weakSlice: ArraySlice<WeakObject> = items[range]
 			let slice : ArraySlice<T?> = ArraySlice(weakSlice.map { $0.value })
@@ -177,11 +177,11 @@ public struct WeakArray<T: AnyObject>: Sequence, CustomDebugStringConvertible, E
         items.removeAll(keepingCapacity: keepCapacity)
     }
 
-    mutating public func removeRange(_ subRange: Range<Int>) {
+    mutating public func removeRange(_ subRange: CountableClosedRange<Int>) {
         items.removeSubrange(subRange)
     }
 
-    mutating public func replaceRange(_ subRange: Range<Int>, with newElements: ArraySlice<T?>) {
+    mutating public func replaceRange(_ subRange: CountableClosedRange<Int>, with newElements: ArraySlice<T?>) {
         let weakElements = newElements.map { Weak(value: $0) }
         items.replaceSubrange(subRange, with: weakElements)
     }
