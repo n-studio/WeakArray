@@ -21,11 +21,11 @@ Pod::Spec.new do |s|
 WeakArray offers a collection type that behaves like a Swift Array, but will not retain any of its objects.
                        DESC
 
-  s.homepage         = 'https://github.com/dmauro/WeakArray'
+  s.homepage         = 'https://github.com/raumfeld/WeakArray'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'Apache', :file => 'LICENSE' }
   s.author           = { 'David Mauro' => 'email@dmauro.com' }
-  s.source           = { :git => 'https://github.com/dmauro/WeakArray.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/raumfeld/WeakArray.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '8.0'
