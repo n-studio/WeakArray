@@ -1,0 +1,6 @@
+use_frameworks!
+target 'WeakArray_Tests' do
+  pod 'WeakArray', :path => '../'
+  
+  
+end

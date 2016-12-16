@@ -1,0 +1,6 @@
+framework module WeakArray {
+  umbrella header "WeakArray-umbrella.h"
+
+  export *
+  module * { export * }
+}

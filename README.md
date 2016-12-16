@@ -1,24 +1,19 @@
-Swift WeakArray
-========
-Version 0.3  
+## Swift WeakArray
+
 WeakArray offers a collection type that behaves like a Swift Array, but will not retain any of its objects.
 
-Released under the Apache License, version 2.0
+	
+## Installation
 
-How to Install
-==============
+WeakArray is available through [CocoaPods](http://cocoapods.org). To install
+it, simply add the following line to your Podfile:
 
-1. Add WeakArray as a [submodule](http://git-scm.com/docs/git-submodule) with `git submodule add https://github.com/dmauro/WeakArray` (ideally forking and pointing to your fork's url)
-2. Open the `WeakArray` folder, and drag `WeakArray.xcodeproj` into the file navigator of your app project. **NOTE: The WeakArray project needs to be added somewhere under the target project or you won't be able to add it to your target dependencies.**
-3. Ensure that the deployment target of the WeakArray project matches that of the application target.
-4. In your target's "Build Phases" panel, add `WeakArray.framework` to the "Target Dependencies"
-5. Click on the `+` button at the top left of the panel and select "New Copy Files Phase". Rename this new phase to "Copy Frameworks", set the "Destination" to "Frameworks", and add `WeakArray.framework`.
+```ruby
+pod "WeakArray"
+```
 
-If that's too complicated, you can always just copy the files into your project manually and add them to your target. You'll only need the `WeakArray.h` and `WeakArray.swift` files.
+## Usage
 
-
-Usage
-=====
 First make sure to import WeakArray:
 
 	import WeakArray
@@ -96,8 +91,13 @@ match the number of enumerations you get**.
         XCTAssert(i == 2, "")
     }
     
-Version History
-===============
+## Version History
+
+**v0.4**
+
+* Updated to Swift 3
+* Made available via cocoapods
+
 **v0.3**
 
 * Update for Swift 1.0. Thanks to [Mazyod](https://github.com/Mazyod) in [Pull Request #1](https://github.com/dmauro/WeakArray/pull/1).
@@ -113,3 +113,10 @@ Version History
 
 * Released!
 	
+## Author
+
+David Mauro, email@dmauro.com
+
+## License
+
+WeakArray is available under the Apache license. See the LICENSE file for more info.

@@ -1,0 +1,10 @@
+framework module WeakArray {
+  umbrella header "WeakArray-umbrella.h"
+
+  export *
+  module * { export * }
+}
+
+module WeakArray.Swift {
+    header "WeakArray-Swift.h"
+}

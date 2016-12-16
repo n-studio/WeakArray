@@ -1,0 +1,10 @@
+framework module Pods_WeakArray_Tests {
+  umbrella header "Pods-WeakArray_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}
+
+module Pods_WeakArray_Tests.Swift {
+    header "Pods_WeakArray_Tests-Swift.h"
+}
