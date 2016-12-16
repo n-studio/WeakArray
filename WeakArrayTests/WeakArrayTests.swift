@@ -95,7 +95,7 @@ class WeakArrayTests: XCTestCase {
         a1.append(obj2)
         a2.append(obj3)
         a2.append(obj4)
-        a1 += a2
+        _ = a1 += a2
         XCTAssert(a1.count == 4, "Count is incorrect")
         XCTAssert(a1[2] == obj3, "Incorrect object added")
         XCTAssert(a1[3] == obj4, "Incorrect object added")
@@ -112,7 +112,7 @@ class WeakArrayTests: XCTestCase {
         a1.append(obj2)
         a2.append(obj3!)
         a2.append(obj4!)
-        a1 += a2
+        _ = a1 += a2
         XCTAssert(a1.count == 4, "Count is incorrect")
         XCTAssert(a1[2] == obj3, "Incorrect object added")
         XCTAssert(a1[3] == obj4, "Incorrect object added")
@@ -123,7 +123,7 @@ class WeakArrayTests: XCTestCase {
         var a2: [Object] = []
         var obj: Object? = Object()
         a2.append(obj!)
-        a1 += a2
+        _ = a1 += a2
         a2.removeLast()
         XCTAssert(a1[0] == obj, "Object was not added")
         obj = nil
