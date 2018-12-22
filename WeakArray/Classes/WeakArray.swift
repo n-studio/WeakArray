@@ -109,6 +109,12 @@ public struct WeakArray<T: AnyObject>: Sequence, CustomDebugStringConvertible, E
             append(element)
         }
     }
+    
+    public init(array elements: [T]) {
+        for element in elements {
+            append(element)
+        }
+    }
 
     public func makeIterator() -> WeakGenerator<T> {
         let weakSlice: ArraySlice<WeakObject> = items[0..<items.count]
