@@ -29,21 +29,21 @@
 /* Begin PBXFileReference section */
 		04A48845C89937B144510B4A05C0BB4A /* Pods-WeakArray_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-WeakArray_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		3522054D9448E02EA22E591EE65136BB /* Pods-WeakArray_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-WeakArray_Tests-resources.sh"; sourceTree = "<group>"; };
-		378C0F2D628C20FD57FC9082085E815C /* WeakArray.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = WeakArray.framework; path = WeakArray.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		52BE39A58CB68789E5E1242E3F08923B /* WeakArray.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = WeakArray.modulemap; sourceTree = "<group>"; };
+		378C0F2D628C20FD57FC9082085E815C /* WeakArray.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WeakArray.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		52BE39A58CB68789E5E1242E3F08923B /* WeakArray.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = WeakArray.modulemap; sourceTree = "<group>"; };
 		59750DDA2CFDE569D55123B3F9A0C69A /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6561168F909279F95DF22CE276583EC5 /* Pods-WeakArray_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-WeakArray_Tests-umbrella.h"; sourceTree = "<group>"; };
-		68CD2BA6AFEB5675A67E584E2B944728 /* Pods-WeakArray_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-WeakArray_Tests.modulemap"; sourceTree = "<group>"; };
+		68CD2BA6AFEB5675A67E584E2B944728 /* Pods-WeakArray_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-WeakArray_Tests.modulemap"; sourceTree = "<group>"; };
 		7033433E4E80865ED03302C4FC53B4BD /* WeakArray.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WeakArray.swift; sourceTree = "<group>"; };
 		77149EDEA41AD81E403B169271B840AA /* WeakArray-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "WeakArray-dummy.m"; sourceTree = "<group>"; };
 		91198EB83CE5509D22AEE21B5CFA8430 /* Pods-WeakArray_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-WeakArray_Tests-dummy.m"; sourceTree = "<group>"; };
 		92C27D435BE187ABE28656ADB08CC944 /* WeakArray.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = WeakArray.xcconfig; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9CC50B14247A07D9FFEC22F058548F0E /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C3BEB33F81DD86750B665BB1F6B24892 /* Pods-WeakArray_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-WeakArray_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		C83A0B51011F526953E363F5EE895059 /* Pods-WeakArray_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-WeakArray_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		D39FDA9FC19FC7B588CB0DA9A4123E60 /* Pods_WeakArray_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_WeakArray_Tests.framework; path = "Pods-WeakArray_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D39FDA9FC19FC7B588CB0DA9A4123E60 /* Pods_WeakArray_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeakArray_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D818DE1E96534479BE8086672DAA62B5 /* WeakArray-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "WeakArray-umbrella.h"; sourceTree = "<group>"; };
 		EA0BA3CD4402D4CDDA8FF37C62767837 /* Pods-WeakArray_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-WeakArray_Tests-frameworks.sh"; sourceTree = "<group>"; };
 		ECCD7B2C53F61170B4A5394DDB6DCED8 /* Pods-WeakArray_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-WeakArray_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
@@ -97,7 +97,6 @@
 			children = (
 				D7E6F3927425A80AE749030F86151823 /* Classes */,
 			);
-			name = WeakArray;
 			path = WeakArray;
 			sourceTree = "<group>";
 		};
@@ -178,7 +177,6 @@
 			children = (
 				7033433E4E80865ED03302C4FC53B4BD /* WeakArray.swift */,
 			);
-			name = Classes;
 			path = Classes;
 			sourceTree = "<group>";
 		};
@@ -247,6 +245,11 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0700;
+				TargetAttributes = {
+					13952338E6B12CC2A0DA05119A2FEDC2 = {
+						LastSwiftMigration = 1010;
+					};
+				};
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -358,7 +361,8 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -390,7 +394,8 @@
 				PRODUCT_NAME = WeakArray;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";

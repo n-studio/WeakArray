@@ -34,7 +34,7 @@ class WeakArrayTests: XCTestCase {
         var a = WeakArray<Object>()
         let obj: Object? = Object()
         a.append(obj)
-        XCTAssert(a[0] == obj, "Retrieved object was \(a[0]) instead of expected obj")
+        XCTAssert(a[0] == obj, "Retrieved object was \(String(describing: a[0])) instead of expected obj")
     }
 
     func testStoredObjectsAreNotRetained() {
@@ -42,7 +42,7 @@ class WeakArrayTests: XCTestCase {
         var obj: Object? = Object()
         a.append(obj)
         obj = nil
-        XCTAssertNil(a[0], "We retrieved \(a[0]) instead of nil")
+        XCTAssertNil(a[0], "We retrieved \(String(describing: a[0])) instead of nil")
     }
 
     func testCanStoreWithSubscript() {
@@ -51,7 +51,7 @@ class WeakArrayTests: XCTestCase {
         let obj2: Object? = Object()
         a.append(obj1)
         a[0] = obj2
-        XCTAssert(a[0] == obj2, "Retrieved object was \(a[0]) instead of expected obj")
+        XCTAssert(a[0] == obj2, "Retrieved object was \(String(describing: a[0])) instead of expected obj")
     }
 
     func testCanSetWithRange() {
@@ -65,10 +65,10 @@ class WeakArrayTests: XCTestCase {
         a.append(obj3)
         a.append(obj4)
         a[1...3] = [obj1, obj1, obj1]
-        XCTAssert(a[0] == obj1, "Retrieved object was \(a[0]) instead of expected obj")
-        XCTAssert(a[1] == obj1, "Retrieved object was \(a[0]) instead of expected obj")
-        XCTAssert(a[2] == obj1, "Retrieved object was \(a[0]) instead of expected obj")
-        XCTAssert(a[3] == obj1, "Retrieved object was \(a[0]) instead of expected obj")
+        XCTAssert(a[0] == obj1, "Retrieved object was \(String(describing: a[0])) instead of expected obj")
+        XCTAssert(a[1] == obj1, "Retrieved object was \(String(describing: a[0])) instead of expected obj")
+        XCTAssert(a[2] == obj1, "Retrieved object was \(String(describing: a[0])) instead of expected obj")
+        XCTAssert(a[3] == obj1, "Retrieved object was \(String(describing: a[0])) instead of expected obj")
     }
 
     func testCanGetWithRange() {
@@ -304,11 +304,11 @@ class WeakArrayTests: XCTestCase {
         let obj5: Object? = Object()
         let a: WeakArray = [obj1!, obj2!, obj3!, obj4!]
         
-        XCTAssert(a.indexOf(obj1) == 0, "Object not in correct position, is in \(a.indexOf(obj1)) instead of 0")
-        XCTAssert(a.indexOf(obj2) == 1, "Object not in correct position, is in \(a.indexOf(obj2)) instead of 1")
-        XCTAssert(a.indexOf(obj3) == 2, "Object not in correct position, is in \(a.indexOf(obj3)) instead of 2")
-        XCTAssert(a.indexOf(obj4) == 3, "Object not in correct position, is in \(a.indexOf(obj4)) instead of 3")
-        XCTAssert(a.indexOf(obj5) == nil, "Object not in correct position, is in \(a.indexOf(obj5)) instead of nil")
+        XCTAssert(a.indexOf(obj1) == 0, "Object not in correct position, is in \(String(describing: a.indexOf(obj1))) instead of 0")
+        XCTAssert(a.indexOf(obj2) == 1, "Object not in correct position, is in \(String(describing: a.indexOf(obj2))) instead of 1")
+        XCTAssert(a.indexOf(obj3) == 2, "Object not in correct position, is in \(String(describing: a.indexOf(obj3))) instead of 2")
+        XCTAssert(a.indexOf(obj4) == 3, "Object not in correct position, is in \(String(describing: a.indexOf(obj4))) instead of 3")
+        XCTAssert(a.indexOf(obj5) == nil, "Object not in correct position, is in \(String(describing: a.indexOf(obj5))) instead of nil")
     }
 }
 
