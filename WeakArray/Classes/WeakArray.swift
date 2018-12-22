@@ -169,12 +169,12 @@ public struct WeakArray<T: AnyObject>: Sequence, CustomDebugStringConvertible, E
         return nil
     }
 
-    mutating public func remove(at index: Int) -> T? {
+    @discardableResult mutating public func remove(at index: Int) -> T? {
         let weak = items.remove(at: index)
         return weak.value
     }
 
-    mutating public func removeLast() -> T? {
+    @discardableResult mutating public func removeLast() -> T? {
         let weak = items.removeLast()
         return weak.value
     }
