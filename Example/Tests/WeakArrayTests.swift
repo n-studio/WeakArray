@@ -231,7 +231,7 @@ class WeakArrayTests: XCTestCase {
         let obj2: Object? = Object()
         let obj3: Object? = Object()
         var a: WeakArray = [obj1!, obj2!]
-        a.insert(obj3, atIndex: 1)
+        a.insert(obj3, at: 1)
         let b: WeakArray = [obj1!, obj3!, obj2!]
         XCTAssert(a == b, "Order did not match")
     }
@@ -253,7 +253,7 @@ class WeakArrayTests: XCTestCase {
         let obj3: Object? = Object()
         let obj4: Object? = Object()
         var a: WeakArray = [obj1!, obj2!]
-        a.insertContentsOf([obj3!, obj4!], at: 1)
+        a.insert(contentsOf: [obj3!, obj4!], at: 1)
         let b: WeakArray = [obj1!, obj3!, obj4!, obj2!]
         XCTAssert(a == b, "Order did not match")
     }
@@ -266,7 +266,7 @@ class WeakArrayTests: XCTestCase {
         var a: WeakArray = [obj1!, obj2!]
         var b: WeakArray = [obj3!, obj4!]
         let c: WeakArray = [obj1!, obj2!, obj3!, obj4!]
-        a.appendContentsOf(b[0...1])
+        a.append(contentsOf: b[0...1])
         XCTAssert(a == c, "Items not appended correctly")
     }
 
@@ -304,11 +304,11 @@ class WeakArrayTests: XCTestCase {
         let obj5: Object? = Object()
         let a: WeakArray = [obj1!, obj2!, obj3!, obj4!]
         
-        XCTAssert(a.indexOf(obj1) == 0, "Object not in correct position, is in \(String(describing: a.indexOf(obj1))) instead of 0")
-        XCTAssert(a.indexOf(obj2) == 1, "Object not in correct position, is in \(String(describing: a.indexOf(obj2))) instead of 1")
-        XCTAssert(a.indexOf(obj3) == 2, "Object not in correct position, is in \(String(describing: a.indexOf(obj3))) instead of 2")
-        XCTAssert(a.indexOf(obj4) == 3, "Object not in correct position, is in \(String(describing: a.indexOf(obj4))) instead of 3")
-        XCTAssert(a.indexOf(obj5) == nil, "Object not in correct position, is in \(String(describing: a.indexOf(obj5))) instead of nil")
+        XCTAssert(a.index(of: obj1) == 0, "Object not in correct position, is in \(String(describing: a.index(of: obj1))) instead of 0")
+        XCTAssert(a.index(of: obj2) == 1, "Object not in correct position, is in \(String(describing: a.index(of: obj2))) instead of 1")
+        XCTAssert(a.index(of: obj3) == 2, "Object not in correct position, is in \(String(describing: a.index(of: obj3))) instead of 2")
+        XCTAssert(a.index(of: obj4) == 3, "Object not in correct position, is in \(String(describing: a.index(of: obj4))) instead of 3")
+        XCTAssert(a.index(of: obj5) == nil, "Object not in correct position, is in \(String(describing: a.index(of: obj5))) instead of nil")
     }
 }
 

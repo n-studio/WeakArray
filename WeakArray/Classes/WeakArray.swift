@@ -154,12 +154,12 @@ public struct WeakArray<T: AnyObject>: Sequence, CustomDebugStringConvertible, E
         items.append(weak)
     }
 
-    mutating public func insert(_ newElement: T?, atIndex i: Int) {
+    mutating public func insert(_ newElement: T?, at i: Int) {
         let weak = Weak(value: newElement)
         items.insert(weak, at: i)
     }
     
-    public func indexOf(_ value: T?) -> Int? {
+    public func index(of value: T?) -> Int? {
         for idx in 0..<count {
             let obj = items[idx]
             if value === obj.value {
@@ -169,7 +169,7 @@ public struct WeakArray<T: AnyObject>: Sequence, CustomDebugStringConvertible, E
         return nil
     }
 
-    mutating public func removeAtIndex(_ index: Int) -> T? {
+    mutating public func remove(at index: Int) -> T? {
         let weak = items.remove(at: index)
         return weak.value
     }
@@ -179,7 +179,7 @@ public struct WeakArray<T: AnyObject>: Sequence, CustomDebugStringConvertible, E
         return weak.value
     }
 
-    mutating public func removeAll(_ keepCapacity: Bool) {
+    mutating public func removeAll(_ keepCapacity: Bool = false) {
         items.removeAll(keepingCapacity: keepCapacity)
     }
 
@@ -192,20 +192,20 @@ public struct WeakArray<T: AnyObject>: Sequence, CustomDebugStringConvertible, E
         items.replaceSubrange(subRange, with: weakElements)
     }
 
-    mutating public func insertContentsOf(_ newElements: ArraySlice<T?>, at i: Int) {
+    mutating public func insert(contentsOf newElements: ArraySlice<T?>, at i: Int) {
         let weakElements = newElements.map { Weak(value: $0) }
         items.insert(contentsOf: weakElements, at: i)
     }
 
-    mutating public func appendContentsOf(_ newElements: ArraySlice<T?>) {
+    mutating public func append(contentsOf newElements: ArraySlice<T?>) {
         let weakElements = newElements.map { Weak(value: $0) }
         items.append(contentsOf: weakElements)
     }
 
-    public func filter(_ includeElement: (T?) -> Bool) -> WeakArray<T> {
+    public func filter(_ isIncluded: (T?) throws -> Bool) rethrows -> WeakArray<T> {
         var filtered: WeakArray<T> = []
         for item in items {
-            if includeElement(item.value) {
+            if try isIncluded(item.value) {
                 filtered.append(item.value)
             }
         }
