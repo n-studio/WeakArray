@@ -171,7 +171,7 @@ class WeakArrayTests: XCTestCase {
 
     func testCanBeConstructedWithArrayLiteral() {
         let obj: Object? = Object()
-        var a: WeakArray = [obj!]
+        let a: WeakArray = [obj!]
         XCTAssert(a[0] == obj, "Object was not added")
     }
 
@@ -212,8 +212,8 @@ class WeakArrayTests: XCTestCase {
     func testSlicesOfSameValuesAreEqual() {
         let obj1: Object? = Object()
         let obj2: Object? = Object()
-        var a: WeakArray = [obj1!, obj2!]
-        var b: WeakArray = [obj1!, obj2!]
+        let a: WeakArray = [obj1!, obj2!]
+        let b: WeakArray = [obj1!, obj2!]
         XCTAssert(a[0...1] == b[0...1], "Slices are not equal")
     }
 
@@ -221,8 +221,8 @@ class WeakArrayTests: XCTestCase {
         let obj1: Object? = Object()
         let obj2: Object? = Object()
         let obj3: Object? = Object()
-        var a: WeakArray = [obj1!, obj2!, obj3!]
-        var b: WeakArray = [obj1!, obj2!, obj3!]
+        let a: WeakArray = [obj1!, obj2!, obj3!]
+        let b: WeakArray = [obj1!, obj2!, obj3!]
         XCTAssert(a[0...1] != b[1...2], "Slices should not be equal")
     }
 
@@ -264,7 +264,7 @@ class WeakArrayTests: XCTestCase {
         let obj3: Object? = Object()
         let obj4: Object? = Object()
         var a: WeakArray = [obj1!, obj2!]
-        var b: WeakArray = [obj3!, obj4!]
+        let b: WeakArray = [obj3!, obj4!]
         let c: WeakArray = [obj1!, obj2!, obj3!, obj4!]
         a.append(contentsOf: b[0...1])
         XCTAssert(a == c, "Items not appended correctly")
@@ -277,7 +277,7 @@ class WeakArrayTests: XCTestCase {
         let obj4: Object? = Object()
         let a: WeakArray = [obj1!, obj2!, obj3!, obj4!]
         var count = 0
-        var b = a.filter { item in
+        let b = a.filter { item in
             count += 1
             return count == 4
         }

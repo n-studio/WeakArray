@@ -1,5 +1,5 @@
 PODS:
-  - WeakArray (0.1.0)
+  - WeakArray (0.4)
 
 DEPENDENCIES:
   - WeakArray (from `../`)
@@ -9,8 +9,8 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  WeakArray: 385431b50ee61e4bee89cf30bc864c311701d128
+  WeakArray: 2ea6bb0cbb0c3a6dae12f816534772505d63cd97
 
 PODFILE CHECKSUM: 062e63a0802c2e4b2ed7d339fb4a615edf8f7984
 
-COCOAPODS: 1.1.1
+COCOAPODS: 1.9.3

@@ -30,7 +30,7 @@ WeakArray offers a collection type that behaves like a Swift Array, but will not
 
   s.ios.deployment_target = '8.0'
 
-  s.source_files = 'WeakArray/Classes/**/*'
+  s.source_files = 'Source/**/*'
   
   # s.resource_bundles = {
   #   'WeakArray' => ['WeakArray/Assets/*.png']
