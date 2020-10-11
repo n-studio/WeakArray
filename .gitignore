@@ -1,3 +1,7 @@
 *.xcuserstate
 xcuserdata
+xcshareddata
 *.xccheckout
+Example/Pods
+.swiftpm
+
