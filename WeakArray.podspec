@@ -29,9 +29,10 @@ WeakArray offers a collection type that behaves like a Swift Array, but will not
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '8.0'
+  s.osx.deployment_target = '10.15'
 
   s.source_files = 'Source/**/*'
-  
+
   # s.resource_bundles = {
   #   'WeakArray' => ['WeakArray/Assets/*.png']
   # }
